@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Auth</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBU8tDQDJbu8KWdzYASrhjPc63a9XhSqwk",
+            authDomain: "jopjoirdatabase.firebaseapp.com",
+            projectId: "jopjoirdatabase",
+            storageBucket: "jopjoirdatabase.firebasestorage.app",
+            messagingSenderId: "1005048549344",
+            appId: "1:1005048549344:android:1386d1dd2bdfb7bc696585"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        function registrarUsuario(email, password) {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    alert("Usuario registrado: " + user.email);
+                })
+                .catch((error) => {
+                    var errorMessage = error.message;
+                    alert("Error: " + errorMessage);
+                });
+        }
+
+        function iniciarSesion(email, password) {
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    alert("Usuario autenticado: " + user.email);
+                })
+                .catch((error) => {
+                    var errorMessage = error.message;
+                    alert("Error: " + errorMessage);
+                });
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
